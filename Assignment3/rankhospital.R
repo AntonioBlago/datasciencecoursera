@@ -35,10 +35,10 @@ rankhospital <- function(state, outcome, num = "best") {
   
   
   data_outcome$rank <- 1:nrow(data_outcome)
-  
+  #print(data_outcome)
   check_if_num=as.numeric(num)
   
-  if (is.na(check_if_num)!=TRUE){
+  if (is.na(check_if_num)==TRUE){
     if (nrow(data_outcome)<as.numeric(num)){
       out<-NA
     }
@@ -47,7 +47,9 @@ rankhospital <- function(state, outcome, num = "best") {
   }else if(num=="worst"){
     out<-data_outcome[data_outcome$rank==nrow(data_outcome),1]
   }else{
-    out<-data_outcome[data_outcome$rank==num-1,1]
+    #print(data_outcome)
+    number<-num+1
+    out<-data_outcome[data_outcome$rank==number,1]
   }
 
   out
